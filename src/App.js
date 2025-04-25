@@ -1,30 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
-
-function Header(){
-  return <div>
-    <div>이 녀석은 헤더입니다</div>
-    {/* 모든 작업은 한 태그 안에서만 */}
-    {/* App 처럼 ()로 묶어도 됨 */}
-  </div>
-}
-
-function Footer(){
-  return (
-    <div>
-      <div style={{color:"red",fontSize:"20px"}}>이 녀석은 푸터입니다</div>
-      {/* style은 중괄호 2개 {{}} color : >>> " red " <<<   font-size =>> fontSize */}
-    </div>
-  )
-}
+import Header from './component/Header';
+import Body from './component/Body';
+import Footer from './component/Footer';
 
 function App() {
+  let list = [
+    {subId : "1", subName:"java"},
+    {subId : "2", subName:"html"},
+    {subId : "3", subName:"oracle"},
+    {subId : "4", subName:"react"},
+  ];
+  let numList = [6,7,2,3,4];
   return (
     <div className="App">
-      <Header></Header>
-      {/* 위에서 만든 헤더가 부착됨 */}
+      {/* <Header title="Hello React"></Header> */}
+      <Header title="Hello React" contents="과목을 보여줍니다." fnHeader={(cont)=>{
+        // fnHeader 함수를 보냄
+        alert(cont);
+      }}></Header>
+      {/* <Header title="프로그래밍 재밌다"></Header> */}
+      <Header title="프로그래밍 재밌다" fnHeader={()=>{}}></Header>
+      {/* fnHeader={()=>{}} 빈 값이라도 넣어줘야함 */}
+      <Body list={list} fnSubName={(subName)=>{
+        alert(subName);
+      }}></Body>
       <div>Hello React</div>
-      <Footer></Footer>
+      <Footer list={numList} fnFooter={(num)=>{
+        // numList가 목록으로 출력
+        // 목록 클릭 시 해당 숫자 alert창에 띄우기
+        alert(num);
+      }}></Footer>
     </div>
   );
 }
