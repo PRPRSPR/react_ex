@@ -21,6 +21,10 @@ function Menu() {
         <li><Link to="/effect">Effect.js</Link></li>
         <li><Link to="/product">ProductMain.js</Link></li>
         <li><Link to="/review">Review.js</Link></li>
+        <li><Link to="/ref">Ref.js</Link></li>
+        <li><Link to="/login">Login.js</Link></li>
+        <li><Link to="/context">ContextEx.js</Link></li>
+        <li><Link to="/main">contextEx22.js</Link></li>
       </ul>
     </nav>
   );
