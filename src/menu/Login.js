@@ -1,48 +1,44 @@
 import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom";
 import { Button, Container, TextField, Typography, Paper } from '@mui/material'
 
 function Login() {
-    const [username, setUsername] = useState('');
+    const [userId, setUserId] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+    const navigate = useNavigate();
+
     const handleLogin = async () => {
-        if (!username || !password) {
+        if (!userId || !password) {
             setError('아이디/비밀번호를 입력해주세요.');
             return;
         }
 
-        const testUsername = 'test';
-        const testPassword = '1234';
-
         try {
-            // const response = await fetch('https://example.com/api/login', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify({
-            //         username,
-            //         password,
-            //     }),
-            // });
-        
-            // const data = await response.json();
-            
-            // if (data.success) {
-            // // 로그인 성공 시
-            // alert('Login successful!');
-            // // 로그인 후 리디렉션 등을 구현할 수 있음
-            // } else {
-            // // 로그인 실패 시
-            // setError('Invalid username or password');
-            // }
-            if (username === testUsername && password === testPassword) {
-                alert('로그인 성공');
-                setError(''); 
-            } else {
-                setError('아이디/비밀번호를 확인하세요.');
-            }
+            fetch("http://localhost:3005/login", {
+                method : "POST",
+                headers : {
+                    "Content-type" : "application/json"
+                },
+                credentials : "include",
+                body : JSON.stringify({
+                    userId : userId,
+                    pwd : password
+                })
+            })
+                .then( res => res.json())
+                .then( data => {
+                    alert(data.message);
+                    if(data.success){
+                        // console.log(data.token);
+                        localStorage.setItem("token", data.token);
+                        navigate("/feed");
+                    }
+                })
+                .catch( err => {
+                    console.log("서버 에러");
+                })
 
         } catch (error) {
             setError('Error logging in. Please try again later.');
@@ -61,7 +57,7 @@ function Login() {
                 label="사용자 이름"
                 margin="normal"
                 variant="outlined"
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setUserId(e.target.value)}
             />
             <TextField
                 fullWidth
