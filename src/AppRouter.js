@@ -11,6 +11,8 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import AtmIcon from '@mui/icons-material/Atm';
 import { LoginRounded } from '@mui/icons-material';
 import ArtTrackIcon from '@mui/icons-material/ArtTrack';
+import NoteAltIcon from '@mui/icons-material/NoteAlt';
+import AdsClickIcon from '@mui/icons-material/AdsClick';
 
 import App from './menu/App';
 import State from './menu/State';
@@ -25,23 +27,27 @@ import ReducerEx from './menu/ReducerEx';
 import ReducerEx2 from './menu/ReducerEx2';
 import FeedList from './menu/FeedList';
 import FeedEdit from './menu/FeedEdit';
+import Memo from './menu/Memo';
+import UseIdEx from './menu/UseIdEx';
 
 const drawerWidth = 240;
 
 const menuItems = [
-  { text: 'Login.js', icon: <LoginRounded />, path: '/login' },
-  { text: 'App.js', icon: <AppsIcon />, path: '/app' },
-  { text: 'State.js', icon: <ArticleIcon />, path: '/state' },
-  { text: 'Effect.js', icon: <SendIcon />, path: '/effect' },
-  { text: 'ProductMain.js', icon: <ShoppingCartIcon />, path: '/product' },
-  { text: 'Review.js', icon: <RateReviewIcon />, path: '/review' },
-  { text: 'Ref.js', icon: <DashboardIcon />, path: '/ref' },
-  { text: 'Context.js', icon: <PeopleIcon />, path: '/context' },
-  { text: 'Main.js', icon: <HomeIcon />, path: '/main' },
-  { text: 'ReducerEx.js', icon: <AtmIcon />, path: '/reducer' },
-  { text: 'ReducerEx2.js', icon: <AtmIcon />, path: '/reducer2' },
-  { text: 'FeedList.js', icon: <ArtTrackIcon />, path: '/feed' },
-  { text: 'FeedEdit.js', icon: <ArtTrackIcon />, path: '/feedEdit' },
+  { text: 'Login', icon: <LoginRounded />, path: '/login' },
+  { text: 'App', icon: <AppsIcon />, path: '/app' },
+  { text: 'State', icon: <ArticleIcon />, path: '/state' },
+  { text: 'Effect', icon: <SendIcon />, path: '/effect' },
+  { text: 'ProductMain', icon: <ShoppingCartIcon />, path: '/product' },
+  { text: 'Review', icon: <RateReviewIcon />, path: '/review' },
+  { text: 'Ref', icon: <DashboardIcon />, path: '/ref' },
+  { text: 'Context', icon: <PeopleIcon />, path: '/context' },
+  { text: 'Main', icon: <HomeIcon />, path: '/main' },
+  { text: 'ReducerEx', icon: <AtmIcon />, path: '/reducer' },
+  { text: 'ReducerEx2', icon: <AtmIcon />, path: '/reducer2' },
+  { text: 'FeedList', icon: <ArtTrackIcon />, path: '/feed' },
+  { text: 'FeedEdit', icon: <ArtTrackIcon />, path: '/feedEdit' },
+  { text: 'Memo', icon: <NoteAltIcon />, path: '/memo' },
+  { text: 'UseIdEx', icon: <AdsClickIcon />, path: '/useId' },
 ];
 
 function AppRouter() {
@@ -65,7 +71,7 @@ function AppRouter() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div" sx={{ textAlign: 'center', width: '100%' }}>
-            메뉴 목록
+            js 메뉴 목록
           </Typography>
         </Toolbar>
         <List>
@@ -113,6 +119,8 @@ function AppRouter() {
           <Route path="/reducer2" element={<ReducerEx2 />} />
           <Route path="/feed" element={<FeedList />} />
           <Route path="/feedEdit" element={<FeedEdit />} />
+          <Route path="/memo" element={<Memo />} />
+          <Route path="/useId" element={<UseIdEx />} />
         </Routes>
       </Box>
     </Box>
